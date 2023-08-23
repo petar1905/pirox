@@ -1,0 +1,3 @@
+# Irox
+
+Basic terminal calculator.
