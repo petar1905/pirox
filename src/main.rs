@@ -1,7 +1,7 @@
-mod converter;
+mod string_traits;
 mod operation;
-use converter::ToOperation;
+use string_traits::ToOperation;
 
 fn main() {
-    println!("{}","2*2-2".to_string().to_operation());
+    println!("{}","2+2/2*3".to_string().to_operation().calculate());
 }
