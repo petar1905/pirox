@@ -1,8 +1,15 @@
 [package]
 name = "pirox"
+description = "Library for building a calculator."
+repository = "https://codeberg.org/ppsn/Pirox.git"
+license = "MIT"
 version = "0.0.1"
 edition = "2021"
 
 [lib]
 name = "pirox"
 path = "src/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = "0.2.87"

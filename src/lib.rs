@@ -1,4 +1,7 @@
 #![allow(dead_code)]
+
+use string_traits::ToOperation;
+use wasm_bindgen::prelude::wasm_bindgen;
 mod string_traits;
 mod operation;
 
@@ -15,4 +18,9 @@ mod tests {
         assert_eq!(expr, 16);
 
     }
+}
+
+#[wasm_bindgen]
+pub fn calculate(expression: String) -> i32 {
+    expression.to_operation().calculate()
 }
