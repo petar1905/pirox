@@ -1,3 +1,3 @@
-# Irox
+# Pirox
 
-Basic terminal calculator.
+Library for building a calculator.
