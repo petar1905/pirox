@@ -8,3 +8,6 @@ After cloning the repository, run the following command:
     wasm-pack build --target web
    And open the HTML file for the WASM example in any web server (e.g. Five Server for Visual Studio Code)
 
+## To-do
+- [ ] Support for parentheses
+- [ ] Support for decimals
