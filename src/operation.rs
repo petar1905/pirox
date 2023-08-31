@@ -11,12 +11,12 @@ pub struct Operation {
 impl fmt::Display for Operation {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let left_display: String;
-        if self.left_side != "" {
+        if self.left_side.is_empty() {
             left_display = self.left_side.clone();
         } else {left_display = "None".to_string();}
 
         let right_display: String;
-        if self.right_side != "" {
+        if self.right_side.is_empty() {
             right_display = self.right_side.clone();
         } else {right_display = "None".to_string();}
 
@@ -31,23 +31,23 @@ impl fmt::Display for Operation {
 
 impl Operation {
     pub fn calculate(&self) -> i32 {
-        let left_result: i32;
-        let right_result: i32;
+        
+        
 
-        if self.left_side.clone().has_operators() {
-            left_result = self.left_side.clone().to_operation().calculate()
-        } else {left_result = self.left_side.parse().unwrap()}
+        let left_result: i32 = if self.left_side.clone().has_operators() {
+            self.left_side.clone().to_operation().calculate()
+        } else {self.left_side.parse().unwrap()};
 
-        if self.right_side.clone().has_operators() {
-            right_result = self.right_side.clone().to_operation().calculate()
-        } else {right_result = self.right_side.parse().unwrap()}
+        let right_result: i32 = if self.right_side.clone().has_operators() {
+            self.right_side.clone().to_operation().calculate()
+        } else {self.right_side.parse().unwrap()};
 
         match self.operator {
-            '+' => return left_result+right_result,
-            '-' => return left_result-right_result,
-            '*' => return left_result*right_result,
-            '/' => return left_result/right_result,
-            _ => return 0
+            '+' => left_result+right_result,
+            '-' => left_result-right_result,
+            '*' => left_result*right_result,
+            '/' => left_result/right_result,
+            _ => 0
         }
     }
 }
