@@ -15,9 +15,9 @@ impl ToOperation for String {
         for current_operator in OPERATORS {
             let sliced = self.split_once(current_operator);
             if let Some(x) = sliced {
-                if x.0 != "" {left_side = x.0.to_string()}
+                if !x.0.is_empty() {left_side = x.0.to_string()}
                 else {panic!("Empty side!")}
-                if x.1 != "" {right_side = x.1.to_string()}
+                if !x.1.is_empty() {right_side = x.1.to_string()}
                 else {panic!("Empty side!")}
                 operator = current_operator;
                 break;
@@ -62,7 +62,7 @@ impl RemoveParentheses for String {
                 layer += 1;
             }
             if inside_par {buffer.append(current_char)}
-            if end_par {if layer > 0 {layer -= 1}}
+            if end_par && layer > 0 {layer -= 1}
             if inside_par && layer == 0 {break;}
         }
         buffer.string().unwrap()
@@ -77,8 +77,8 @@ impl RemoveParentheses for String {
 
     fn remove_parentheses(self) -> String {
         let binding = self.clone().get_parentheses_pattern();
-        let mut expr_to_calc = binding.replace("(", "");
-        expr_to_calc = expr_to_calc.replace(")", "");
+        let mut expr_to_calc = binding.replace('(', "");
+        expr_to_calc = expr_to_calc.replace(')', "");
 
         let conv = binding.as_str();
         let solution = expr_to_calc.to_operation().calculate();

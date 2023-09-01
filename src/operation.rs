@@ -10,20 +10,18 @@ pub struct Operation {
 
 impl fmt::Display for Operation {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        let left_display: String;
-        if self.left_side.is_empty() {
-            left_display = self.left_side.clone();
-        } else {left_display = "None".to_string();}
-
-        let right_display: String;
-        if self.right_side.is_empty() {
-            right_display = self.right_side.clone();
-        } else {right_display = "None".to_string();}
-
-        let operator_display: String;
-        if self.operator != '\0' {
-            operator_display = self.operator.clone().to_string();
-        } else {operator_display = "None".to_string();}
+        
+        let left_display: String = if self.left_side.is_empty() {
+            self.left_side.clone()
+        } else {"None".to_string()};
+        
+        let right_display: String = if self.right_side.is_empty() {
+            self.right_side.clone()
+        } else {"None".to_string()};
+        
+        let operator_display: String = if self.operator != '\0' {
+            self.operator.clone().to_string()
+        } else {"None".to_string()};
 
         write!(f, "Operation {} {} {} ", left_display, operator_display, right_display)
     }
