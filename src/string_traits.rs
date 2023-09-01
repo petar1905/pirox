@@ -48,18 +48,22 @@ pub trait RemoveParentheses {
 }
 
 impl RemoveParentheses for String {
-    // this function works but cannot detect nested parentheses yet
     fn get_parentheses_pattern(self) -> String {
         let str = self.as_str();
         let mut buffer: Builder = Builder::default();
         let mut inside_par: bool = false;
+        let mut layer = 0;
 
         for current_char in str.chars() {
             let start_par: bool = current_char == '(';
             let end_par: bool = current_char == ')';
-            if start_par {inside_par = true}
+            if start_par {
+                inside_par = true;
+                layer += 1;
+            }
             if inside_par {buffer.append(current_char)}
-            if end_par {break;}
+            if end_par {if layer > 0 {layer -= 1}}
+            if inside_par && layer == 0 {break;}
         }
         buffer.string().unwrap()
     }
