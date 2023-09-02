@@ -77,8 +77,14 @@ impl RemoveParentheses for String {
 
     fn remove_parentheses(self) -> String {
         let binding = self.clone().get_parentheses_pattern();
-        let mut expr_to_calc = binding.replace('(', "");
-        expr_to_calc = expr_to_calc.replace(')', "");
+        let mut expr_to_calc = binding.clone();
+
+        expr_to_calc.pop();
+        expr_to_calc.remove(0);
+
+        expr_to_calc = if expr_to_calc.clone().has_parentheses() {
+            expr_to_calc.remove_parentheses()
+        } else {expr_to_calc};
 
         let conv = binding.as_str();
         let solution = expr_to_calc.to_operation().calculate();
