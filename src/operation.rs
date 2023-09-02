@@ -1,6 +1,5 @@
 use core::fmt;
 use crate::string_traits::{HasOperators, ToOperation};
-pub const OPERATORS: [char; 4] = ['+', '-', '*', '/'];
 
 pub struct Operation {
     pub(crate) left_side: String,
@@ -19,7 +18,7 @@ impl Operation {
         let left_result: i32 = if self.left_side.clone().has_operators() {
             self.left_side.clone().to_operation().calculate()
         } else {self.left_side.parse().unwrap()};
-
+        
         let right_result: i32 = if self.right_side.clone().has_operators() {
             self.right_side.clone().to_operation().calculate()
         } else {self.right_side.parse().unwrap()};
