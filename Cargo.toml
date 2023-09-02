@@ -3,7 +3,7 @@ name = "pirox"
 description = "Library for building a calculator."
 repository = "https://codeberg.org/ppsn/Pirox.git"
 license = "MIT"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2021"
 
 [lib]
