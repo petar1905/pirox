@@ -99,3 +99,22 @@ impl RemoveParentheses for String {
         parsed_expr
     }
 }
+
+pub trait StringCalculate {
+    fn calculate(self) -> i32;
+}
+
+impl StringCalculate for String {
+    fn calculate(self) -> i32 {
+        let mut expr = self.to_string().to_operation();
+        let mut has_par: bool = expr.left_side.clone().has_parentheses();
+        if has_par {
+            expr.left_side = expr.left_side.clone().remove_parentheses();
+        }
+        has_par = expr.right_side.clone().has_parentheses();
+        if has_par {
+            expr.right_side = expr.right_side.clone().remove_parentheses();
+        }
+        expr.calculate()
+    }
+}

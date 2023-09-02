@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 
-use string_traits::ToOperation;
+use string_traits::StringCalculate;
 use wasm_bindgen::prelude::wasm_bindgen;
 mod string_traits;
 mod char_traits;
@@ -12,17 +12,16 @@ pub fn add(left: usize, right: usize) -> usize {
 
 #[cfg(test)]
 mod tests {
-    use crate::string_traits::{ToOperation, RemoveParentheses};
+    use crate::string_traits::StringCalculate;
+
     #[test]
     fn parse_parentheses() {
-        let mut expr = "((3*(1+1))+((2*2)*2))/(3-1)".to_string().to_operation();
-        expr.left_side = expr.left_side.remove_parentheses();
-        expr.right_side = expr.right_side.remove_parentheses();
-        println!("{}", expr)
+        let expr = "((3*(1+1))+((2*2)*2))/(3-1)".to_string();
+        println!("{}", expr.calculate())
     }
 }
 
 #[wasm_bindgen]
 pub fn calculate(expression: String) -> i32 {
-    expression.to_operation().calculate()
+    expression.calculate()
 }
