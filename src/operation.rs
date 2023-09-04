@@ -1,6 +1,7 @@
 use core::fmt;
 use crate::string_traits::{HasOperators, ToOperation};
 
+pub const OPERATORS: [char; 4] = ['+', '-', '*', '/']; 
 pub struct Operation {
     pub(crate) left_side: String,
     pub(crate) right_side: String,
