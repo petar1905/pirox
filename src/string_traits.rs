@@ -1,6 +1,7 @@
 use string_builder::Builder;
 use crate::char_traits::IsOperator;
 use crate::operation::Operation;
+use crate::operation::OPERATORS;
 pub trait ToOperation {
     fn to_operation(self) -> Operation;
     fn get_operator(self) -> (char, usize);
@@ -11,18 +12,20 @@ impl ToOperation for String {
         let mut inside_par: bool = false;
         let mut layer: u32 = 0;
 
-        for (idx, current_char) in str.chars().enumerate() {
-            let start_par: bool = current_char == '(';
-            let end_par: bool = current_char == ')';
-            if start_par {
-                inside_par = true;
-                layer += 1;
+        for current_operator in OPERATORS {
+            for (idx, current_char) in str.chars().enumerate() {
+                let start_par: bool = current_char == '(';
+                let end_par: bool = current_char == ')';
+                if start_par {
+                    inside_par = true;
+                    layer += 1;
+                }
+                if !inside_par && current_char.eq(&current_operator) {
+                    return (current_char, idx)
+                }
+                if end_par && layer > 0 {layer -= 1}
+                if inside_par && layer == 0 {inside_par = false}
             }
-            if !inside_par && current_char.is_operator() {
-                return (current_char, idx)
-            }
-            if end_par && layer > 0 {layer -= 1}
-            if inside_par && layer == 0 {inside_par = false}
         }
         ('\0', usize::MAX)
     }
