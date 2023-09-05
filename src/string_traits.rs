@@ -104,20 +104,16 @@ impl RemoveParentheses for String {
 }
 
 pub trait StringCalculate {
-    fn calculate(self) -> i32;
+    fn calculate(self) -> f64;
 }
 
 impl StringCalculate for String {
-    fn calculate(self) -> i32 {
-        let mut expr = self.to_string().to_operation();
-        let mut has_par: bool = expr.left_side.clone().has_parentheses();
-        if has_par {
-            expr.left_side = expr.left_side.clone().remove_parentheses();
-        }
-        has_par = expr.right_side.clone().has_parentheses();
-        if has_par {
-            expr.right_side = expr.right_side.clone().remove_parentheses();
-        }
-        expr.calculate()
+    fn calculate(self) -> f64 {
+        let has_par: bool = self.clone().has_parentheses();
+        let copy = if has_par {
+            self.to_owned().remove_parentheses()
+        } else {self.to_owned()};
+        let expr = copy.to_string().to_operation();
+        expr.calculate_f64()
     }
 }

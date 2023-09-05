@@ -14,13 +14,12 @@ pub mod pirox {
     }
 }
 
-
 #[cfg(test)]
 mod tests {
     use crate::string_traits::StringCalculate;
     #[test]
     fn parse_parentheses() {
-        let expr = "((3*(1+1))+((2*2)*2))/(3-1)".to_string();
-        println!("{}", expr.calculate())
+        let expr = "7/2*2".to_string().calculate();
+        println!("{}", expr);
     }
 }

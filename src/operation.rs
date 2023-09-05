@@ -32,4 +32,22 @@ impl Operation {
             _ => 0
         }
     }
+
+    pub fn calculate_f64(&self) -> f64 {
+        let left_result: f64 = if self.left_side.clone().has_operators() {
+            self.left_side.clone().to_operation().calculate_f64()
+        } else {self.left_side.parse().unwrap()};
+        
+        let right_result: f64 = if self.right_side.clone().has_operators() {
+            self.right_side.clone().to_operation().calculate_f64()
+        } else {self.right_side.parse().unwrap()};
+
+        match self.operator {
+            '+' => (left_result+right_result).into(),
+            '-' => (left_result-right_result).into(),
+            '*' => (left_result*right_result).into(),
+            '/' => (left_result/right_result).into(),
+            _ => 0.0
+        }
+    }
 }
