@@ -9,7 +9,7 @@ edition = "2021"
 [lib]
 name = "pirox"
 path = "src/lib.rs"
-crate-type = ["cdylib"]
+crate-type = ["lib"]
 
 [dependencies]
 string-builder = "0.2.0"
