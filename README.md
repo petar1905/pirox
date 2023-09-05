@@ -11,4 +11,4 @@ After cloning the repository, run the following command:
 ## To-do
 - [X] Support for parentheses
 - [X] Support for decimals
-- [ ] Ensure crate works when used in other projects
+- [X] Ensure easy integration
