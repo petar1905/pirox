@@ -9,7 +9,7 @@ pub mod pirox {
     use crate::string_traits::StringCalculate;
     use wasm_bindgen::prelude::wasm_bindgen;
     #[wasm_bindgen]
-    pub fn calculate(expression: String) -> i32 {
+    pub fn calculate(expression: String) -> f64 {
         expression.calculate()
     }
 }
