@@ -12,3 +12,6 @@ After cloning the repository, run the following command:
 - [X] Support for parentheses
 - [X] Support for decimals
 - [X] Ensure easy integration
+- [ ] Exponent support
+- [ ] Trigonometric functions
+- [ ] Modulo operation
