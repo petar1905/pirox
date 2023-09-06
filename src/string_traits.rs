@@ -93,7 +93,7 @@ impl RemoveParentheses for String {
         } else {expr_to_calc};
 
         let conv = binding.as_str();
-        let solution = expr_to_calc.to_operation().calculate();
+        let solution = expr_to_calc.to_operation().calculate_f64();
         let parsed_expr = self.replace(conv, solution.to_string().as_str());
 
         if parsed_expr.clone().has_parentheses() {
