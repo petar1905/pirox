@@ -2,6 +2,10 @@
 name = "pirox"
 description = "Library for building a calculator."
 repository = "https://codeberg.org/ppsn/Pirox.git"
+homepage = "https://codeberg.org/ppsn/Pirox"
+keywords = ["calculator", "math"]
+categories = ["mathematics"]
+readme = "README.md"
 license = "MIT"
 version = "0.0.2"
 edition = "2021"
