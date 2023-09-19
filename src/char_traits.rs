@@ -7,6 +7,7 @@ impl IsOperator for char {
         match self {
             '+' | '-' => true,
             '*' | '/' => true,
+            '^' => true,
             _ => false
         }
     }
