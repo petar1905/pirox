@@ -1,7 +1,7 @@
 use core::fmt;
 use crate::string_traits::{HasOperators, ToOperation};
 
-pub const OPERATORS: [char; 4] = ['+', '-', '*', '/']; 
+pub const OPERATORS: [char; 5] = ['+', '-', '*', '/', '^']; 
 pub struct Operation {
     pub(crate) left_side: String,
     pub(crate) right_side: String,
@@ -29,6 +29,7 @@ impl Operation {
             '-' => (left_result-right_result).into(),
             '*' => (left_result*right_result).into(),
             '/' => (left_result/right_result).into(),
+            '^' => (left_result.powf(right_result)).into(),
             _ => 0.0
         }
     }
